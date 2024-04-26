@@ -49,8 +49,8 @@ export default function DeliveryList() {
           <div className='w-[25%] border-r border-blue-300 px-3 py-2'>Price</div>
           <div className='w-[25%] border-r border-blue-300 px-3 py-2'>Author</div>
           <div className='w-[15%] px-3 py-2 flex items-center justify-start gap-4'>
-            <Link href='#'> <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> </Link>
-            <Link href='#'> <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> </Link>  
+            <Link href='/admin/delivery/1'> <FaEye className='hover:text-blue-500 duration-150 hover:scale-110 transition-all ease-in'/> </Link>
+            <Link href='/admin/delivery/edit/1'> <MdEdit className='hover:text-green-500 duration-150 hover:scale-110 transition-all ease-in' /> </Link>  
             <button> 
                 <MdDeleteForever 
                     className='hover:text-red-500 duration-150 hover:scale-110 transition-all ease-in' /> 

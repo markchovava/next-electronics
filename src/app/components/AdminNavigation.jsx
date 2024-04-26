@@ -13,6 +13,7 @@ export default function AdminNavigation() {
         category: false,
         delivery: false,
         user: false,
+        profile: false,
     });
 
 
@@ -30,7 +31,22 @@ export default function AdminNavigation() {
                     </button>
                     <ul className={`absolute z-100 ${isActive.setting == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                            <Link href='/app-info' className=''>App Info</Link>
+                            <Link href='/admin/app-info' className=''>App Info</Link>
+                        </li>
+                    </ul>
+                </li>
+                {/* USERS */}
+                <li className="relative z-20">
+                    <button 
+                        onClick={() => setIsActive({user: !isActive.user})} 
+                        className="flex items-center justify-start gap-2">
+                        Users <FaAngleDown /> </button>
+                    <ul className={`absolute z-100 ${isActive.user == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
+                        <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
+                            <Link href='/admin/user/add' className=''>Add Users</Link>
+                        </li>
+                        <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
+                            <Link href='/admin/user' className=''>User List</Link>
                         </li>
                     </ul>
                 </li>
@@ -54,7 +70,7 @@ export default function AdminNavigation() {
                     <button 
                         onClick={() => setIsActive({brand: !isActive.brand})} 
                         className="flex items-center justify-start gap-2">
-                        Brand <FaAngleDown /> </button>
+                        Brands <FaAngleDown /> </button>
                     <ul className={`absolute z-100 ${isActive.brand == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
                             <Link href='/admin/brand/add' className=''>Add Brand</Link>
@@ -69,7 +85,7 @@ export default function AdminNavigation() {
                     <button
                         onClick={() => setIsActive({category: !isActive.category})} 
                         className="flex items-center justify-start gap-2">
-                        Category <FaAngleDown /> </button> 
+                        Categories <FaAngleDown /> </button> 
                     <ul className={`absolute z-100 ${isActive.category == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
                             <Link href='admin/category/add' className=''>Add Category</Link>
@@ -84,7 +100,7 @@ export default function AdminNavigation() {
                     <button
                         onClick={() => setIsActive({delivery: !isActive.delivery})} 
                         className="flex items-center justify-start gap-2">
-                        Delivery <FaAngleDown /> </button> 
+                        Deliveries <FaAngleDown /> </button> 
                     <ul className={`absolute z-100 ${isActive.delivery == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
                             <Link href='/admin/delivery' className=''>Add Delivery</Link>
@@ -95,20 +111,20 @@ export default function AdminNavigation() {
                     </ul>
                 </li>
             </ul>
-            {/* PROFILE */}
+            
             <ul className="flex items-center justify-start gap-4">
-                {/* USER */}
+                {/* PROFILE */}
                 <li className="relative z-20">
                     <button
-                        onClick={() => setIsActive({user: !isActive.user})} 
+                        onClick={() => setIsActive({profile: !isActive.profile})} 
                         className="flex items-center justify-start gap-2">
-                        User <FaAngleDown /> </button> 
-                    <ul className={`absolute z-100 ${isActive.user == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 right-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
+                        Profile <FaAngleDown /> </button> 
+                    <ul className={`absolute z-100 ${isActive.profile == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 right-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                            <Link href='/profile' className=''>Profile</Link>
+                            <Link href='/admin/profile' className=''>Profile</Link>
                         </li>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                            <Link href='/profile/password' className=''>Password</Link>
+                            <Link href='/admin/password' className=''>Password</Link>
                         </li>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
                             <button className=''>Logout</button>
