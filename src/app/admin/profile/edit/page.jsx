@@ -31,7 +31,7 @@ export default function page() {
 
         {/* BUTTON */}
         <section className='w-[100%]'>
-          <div className='mx-auto w-[90%] flex items-center justify-end'>
+          <div className='mx-auto w-[90%] flex items-center justify-end mb-8'>
             <Link href='/admin/profile' className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
               View Profile
             </Link>

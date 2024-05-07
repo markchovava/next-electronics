@@ -2,7 +2,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-
+/* ToastContainer */
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import MainContextProvider from "@/context/MainContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,9 +19,23 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <MainContextProvider>
+            <Header />
+            {children}
+            <Footer />
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
+        </MainContextProvider>
       </body>
     </html>
   );

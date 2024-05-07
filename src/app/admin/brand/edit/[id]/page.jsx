@@ -5,7 +5,7 @@ import BrandEdit from './components/BrandEdit'
 
 
 
-export default function page() {
+export default function page({ params: {id} }) {
   return (
     <div>
         {/* Bread Crumbs */}
@@ -16,7 +16,7 @@ export default function page() {
                     <li><FaAngleRight /></li>
                     <li><Link href='/admin/brand'>Brand List</Link></li>
                     <li><FaAngleRight /></li>
-                    <li><Link href='/admin/brand/edit'>Edit Brand</Link></li>
+                    <li><Link href={`/admin/brand/edit/${id}`}>Edit Brand</Link></li>
                 </ul>
             </div>
         </section>
@@ -32,14 +32,14 @@ export default function page() {
         {/* BUTTON */}
         <section className='w-[100%]'>
           <div className='mx-auto w-[90%] flex items-center justify-end'>
-            <Link href='/admin/brand/edit/1' className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
-               Brand Info
+            <Link href={`/admin/brand/${id}`} className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
+               View Brand
             </Link>
           </div>
         </section>
 
         {/* BRAND */}
-        <BrandEdit />
+        <BrandEdit id={id} />
 
 
     </div>

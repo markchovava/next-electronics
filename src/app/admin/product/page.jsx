@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { FaAngleRight } from 'react-icons/fa'
 import ProductList from './components/ProductList'
 
-export default function page() {
+export default function page({ params: {id} }) {
   return (
     <div>
         {/* Bread Crumbs */}
@@ -26,7 +26,7 @@ export default function page() {
         </section>
 
         {/* DELIVERY ADD */}
-        <ProductList />
+        <ProductList id={id} />
 
 
     </div>

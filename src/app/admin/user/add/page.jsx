@@ -2,10 +2,14 @@ import Link from 'next/link'
 import React from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import UserAdd from './components/UserAdd'
+import { getRoles } from '@/api/getRoles'
 
 
 
-export default function page() {
+export default async function page() {
+  const rolesData = await getRoles()
+
+
   return (
     <div>
         {/* Bread Crumbs */}
@@ -29,7 +33,6 @@ export default function page() {
           </div>
         </section>
 
-
         {/* BUTTON */}
         <section className='w-[100%]'>
           <div className='mx-auto w-[90%] flex items-center justify-end'>
@@ -40,7 +43,7 @@ export default function page() {
         </section>
 
         {/* DELIVERY ADD */}
-        <UserAdd />
+        <UserAdd rolesData={rolesData}/>
 
 
     </div>

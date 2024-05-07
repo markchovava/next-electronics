@@ -22,7 +22,7 @@ export default function page() {
         <section className='w-[100%]'>
           <div className='w-[90%] mx-auto flex items-center justify-center'>
             <h6 className='text-center font-black text-[3rem] pt-[3rem] pb-[2rem] text-transparent bg-gradient-to-br bg-clip-text from-orange-400 to-pink-500'>
-              Profile List</h6>
+              User List</h6>
           </div>
         </section>
 

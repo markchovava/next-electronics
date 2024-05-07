@@ -5,7 +5,7 @@ import BrandView from './components/BrandView'
 
 
 
-export default function page() {
+export default function page({ params: {id} }) {
   return (
     <div>
         {/* Bread Crumbs */}
@@ -33,14 +33,14 @@ export default function page() {
         {/* BUTTON */}
         <section className='w-[100%]'>
           <div className='mx-auto w-[90%] flex items-center justify-end'>
-            <Link href='/admin/brand/edit/1' className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
+            <Link href={`/admin/brand/edit/${id}`} className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
               Edit Brand
             </Link>
           </div>
         </section>
 
         {/* BRAND LIST */}
-        <BrandView />
+        <BrandView id={id} />
 
 
     </div>

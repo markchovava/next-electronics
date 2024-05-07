@@ -3,7 +3,7 @@ import React from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import DeliveryEdit from './components/DeliveryEdit'
 
-export default function page() {
+export default function page({ params: {id} }) {
   return (
     <div>
         {/* Bread Crumbs */}
@@ -31,14 +31,14 @@ export default function page() {
         {/* BUTTON */}
         <section className='w-[100%]'>
           <div className='mx-auto w-[90%] flex items-center justify-end'>
-            <Link href='/admin/dlievery/edit/1' className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
-              View Category
+            <Link href={`/admin/delivery/edit/${id}`} className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
+              View Delivery
             </Link>
           </div>
         </section>
 
         {/* DELIVERY ADD */}
-        <DeliveryEdit />
+        <DeliveryEdit id={id} />
 
 
     </div>

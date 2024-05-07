@@ -6,7 +6,7 @@ import ProductView from './components/ProductView';
 
 
 
-export default function page() {
+export default function page({ params: {id} }) {
   return (
     <div>
       {/* Bread Crumbs */}
@@ -32,9 +32,9 @@ export default function page() {
 
         {/* BUTTON */}
         <section className='w-[100%]'>
-          <div className='mx-auto w-[90%] flex items-center justify-end'>
-            <Link href='/admin/product/edit/1' className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
-              Edit
+          <div className='mx-auto w-[90%] flex items-center justify-end pb-8'>
+            <Link href={`/admin/product/edit/${id}`} className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
+              Edit Product
             </Link>
           </div>
         </section>
@@ -42,7 +42,7 @@ export default function page() {
 
 
         {/* PRODUCT */}
-        <ProductView />
+        <ProductView id={id} />
          
 
     </div>

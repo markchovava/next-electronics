@@ -4,7 +4,7 @@ import { FaAngleRight } from 'react-icons/fa'
 import DeliveryView from './components/DeliveryView'
 
 
-export default function page() {
+export default function page({ params: {id} }) {
   return (
     <div>
         {/* Bread Crumbs */}
@@ -15,7 +15,7 @@ export default function page() {
                     <li><FaAngleRight /></li>
                     <li><Link href='/admin/delivery'>Delivery List</Link></li>
                     <li><FaAngleRight /></li>
-                    <li><Link href='/admin/delivery/1'>Delivery Info</Link></li>
+                    <li><Link href={`/admin/delivery/${id}`}>View Delivery</Link></li>
                 </ul>
             </div>
         </section>
@@ -31,15 +31,15 @@ export default function page() {
 
         {/* BUTTON */}
         <section className='w-[100%]'>
-          <div className='mx-auto w-[90%] flex items-center justify-end'>
-            <Link href='/admin/delivery/edit/1' className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
+          <div className='mx-auto w-[90%] flex items-center justify-end mb-8'>
+            <Link href={`/admin/delivery/edit/${id}`} className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
               Edit Delivery
             </Link>
           </div>
         </section>
 
         {/* DELIVERY */}
-        <DeliveryView />
+        <DeliveryView id={id} />
 
 
     </div>

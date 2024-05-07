@@ -33,6 +33,9 @@ export default function AdminNavigation() {
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
                             <Link href='/admin/app-info' className=''>App Info</Link>
                         </li>
+                        <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
+                            <Link href='/admin/role' className=''>Roles</Link>
+                        </li>
                     </ul>
                 </li>
                 {/* USERS */}
@@ -88,7 +91,7 @@ export default function AdminNavigation() {
                         Categories <FaAngleDown /> </button> 
                     <ul className={`absolute z-100 ${isActive.category == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                            <Link href='admin/category/add' className=''>Add Category</Link>
+                            <Link href='/admin/category/add' className=''>Add Category</Link>
                         </li>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
                             <Link href='/admin/category' className=''>Categories List</Link>

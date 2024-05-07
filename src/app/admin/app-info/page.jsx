@@ -2,11 +2,18 @@ import Link from 'next/link'
 import React from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import AppInfoView from './components/AppInfoView'
+import { getAppInfo } from '@/api/getAppInfo'
+import { cookies } from 'next/headers'
+import { tokenAuthName } from '@/tokens/tokenAuth'
 
 
 
+export default async function page() {
+  //const cookieAuthStore = cookies()
+  //const cookieAuth = cookieAuthStore.get(tokenAuthName)
+  const appInfo = await getAppInfo();
 
-export default function page() {
+  
   return (
     <div>
       {/* Bread Crumbs */}
@@ -28,6 +35,7 @@ export default function page() {
           </div>
         </section>
 
+
         <section className='w-[100%]'>
           <div className='mx-auto w-[90%] flex items-center justify-end'>
             <Link href='/admin/app-info/edit' className='text-white rounded-lg px-6 py-3 transition-all duration-200 ease-in-out bg-gradient-to-br from-orange-500 to-pink-500 hover:gradient-to-br hover:from-pink-500 hover:to-orange-600'>
@@ -37,7 +45,7 @@ export default function page() {
         </section>
 
         {/* DELIVERY LIST */}
-        <AppInfoView />
+        <AppInfoView appInfo={appInfo} />
          
 
     </div>

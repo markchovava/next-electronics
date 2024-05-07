@@ -20,18 +20,18 @@ export default function page() {
                     
                 </ul>
             </div>
-        </section>
+      </section>
 
-        {/* PAGE TITLE */}
-        <section className='w-[100%]'>
-          <div className='w-[90%] mx-auto flex items-center justify-center'>
-            <h6 className='text-center font-black text-[3rem] pt-[3rem] pb-[2rem] text-transparent bg-gradient-to-br bg-clip-text from-orange-400 to-pink-500'>
-              Delivery List</h6>
-          </div>
-        </section>
+      {/* PAGE TITLE */}
+      <section className='w-[100%]'>
+        <div className='w-[90%] mx-auto flex items-center justify-center'>
+          <h6 className='text-center font-black text-[3rem] pt-[3rem] pb-[2rem] text-transparent bg-gradient-to-br bg-clip-text from-orange-400 to-pink-500'>
+            Delivery List</h6>
+        </div>
+      </section>
 
-        {/* DELIVERY LIST */}
-        <DeliveryList />
+      {/* DELIVERY LIST */}
+      <DeliveryList />
          
 
     </div>
