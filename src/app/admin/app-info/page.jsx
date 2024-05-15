@@ -3,14 +3,11 @@ import React from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import AppInfoView from './components/AppInfoView'
 import { getAppInfo } from '@/api/getAppInfo'
-import { cookies } from 'next/headers'
-import { tokenAuthName } from '@/tokens/tokenAuth'
+
 
 
 
 export default async function page() {
-  //const cookieAuthStore = cookies()
-  //const cookieAuth = cookieAuthStore.get(tokenAuthName)
   const appInfo = await getAppInfo();
 
   

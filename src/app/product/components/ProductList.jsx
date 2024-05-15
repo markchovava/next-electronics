@@ -1,10 +1,14 @@
 "use client";
 import { baseURL } from '@/api/baseURL';
+import { MainContextState } from '@/context/MainContext';
+import { tokenCart } from '@/tokens/tokenCart';
 import axios from 'axios';
 import Link from 'next/link'
-import React, { useState } from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import { Bounce, toast } from 'react-toastify';
 
 
 
@@ -14,7 +18,10 @@ export default function ProductList({ products }) {
     const [nextURL, setNextURL] = useState(products?.links?.next);
     const [prevURL, setPrevURL] = useState(products?.links?.prev);
     const [meta, setMeta] = useState(products.meta)
-    console.log(products)
+    const router = useRouter()
+    const {cartState, cartDispatch} = MainContextState();
+    const [isSubmit, setIsSubmit] = useState({id: null, state: false});
+    const { setCartToken, getCartToken } = tokenCart()
     /* PAGINATION DATA */
     async function paginationHandler(url) {
         console.log('text')
@@ -31,6 +38,46 @@ export default function ProductList({ products }) {
            console.error(`Error: ${error}`)
         }     
     }
+
+    const postData = async () => {
+        const formData = {...cartState.product, cart_session: getCartToken()};
+        try{
+            const result = await axios.post(`${baseURL}cart`, formData)
+            .then((response) => {
+                if(response?.data?.data?.cart_session !== getCartToken()){
+                    setCartToken(response?.data?.data?.cart_session)
+                  }
+                  /* toast.success(response.data.message, {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "dark",
+                      transition: Bounce,
+                  }); */
+                  setIsSubmit(false)
+                  router.push('/cart');
+                  setTimeout(() => {
+                    window.location.reload();
+                  }, 1000);
+                }
+            );    
+            } catch (error) {
+                console.error(`Error: ${error}`);
+                console.error(`Error Message: ${error.message}`);
+                console.error(`Error Response: ${error.response}`);
+                setIsSubmit(false);
+            }
+    }
+
+    useEffect(() => {
+        isSubmit.state == true && postData();
+    }, [isSubmit]);
+
+
   return (
     <section className='w-[75%] px-8'>
         <h6 className='text-[2.5rem] font-extrabold mb-4'>
@@ -79,10 +126,34 @@ export default function ProductList({ products }) {
                         <div className="flex items-center justify-start">
                             <input 
                             type="number" 
+                            name="quantity"
+                            onChange={(e) => 
+                                setData(prevState => prevState.map(i => i.id === item.id ? {...i, quantity: e.target.value} : i))
+                            } 
                             placeholder="00"
                             className="w-[55%] rounded-l-xl outline-none bg-white border border-slate-300 h-[3rem] px-3" />
-                            <button className="w-[45%] rounded-r-xl drop-shadow-md bg-gradient-to-br from-orange-400 to-pink-400 hover:bg-gradient-to-br hover:from-pink-400 hover:to-orange-400 text-white h-[3rem]">
-                            Add to Cart</button>
+                            <button 
+                                onClick={() => {
+                                    setIsSubmit({id: item.id, state:true});
+                                    cartDispatch({
+                                        type: 'ADD_PRODUCT', 
+                                        payload: {
+                                            product_id: item.id,
+                                            name: item.name,
+                                            price: item.price,
+                                            quantity: Number(item.quantity),
+                                            image: item.product_images[0].image,
+                                        }
+                                    }); 
+                                }}
+                                className="w-[45%] rounded-r-xl drop-shadow-md bg-gradient-to-br from-orange-400 to-pink-400 hover:bg-gradient-to-br hover:from-pink-400 hover:to-orange-400 text-white h-[3rem]">
+                                 { 
+                                    isSubmit.id == item.id 
+                                    && isSubmit.state == true 
+                                    ? 'Processing' 
+                                    : 'Add to Cart' 
+                                }
+                            </button>
                         </div>
                     </div>
                 </div>

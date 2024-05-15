@@ -1,9 +1,14 @@
+"use client"
 import Link from 'next/link'
 import React from 'react'
 import { FaCaretRight, FaPhoneAlt } from 'react-icons/fa';
 import { FaMapLocationDot } from 'react-icons/fa6';
 
-export default function Footer() {
+
+
+export default function Footer({ appInfo }) {
+    console.log('appInfo')
+    console.log(appInfo)
   return (
     <section className='w-[100%] bg-gradient-to-br from-orange-500 to-pink-500'>
         <div className='w-[94%] text-white mx-auto'>
@@ -11,7 +16,10 @@ export default function Footer() {
                 {/* LOGO */}
                 <div className='lg:w-[40%] w-[100%] px-3'>
                     <h5 className='font-semibold text-[2rem]'>Fortune Shop</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>
+                        At [Your Company Name], we're passionate about bringing 
+                        high-quality [Product Category] to the people
+                    </p>
                     <div className='flex items-center justify-start'>
 
                     </div>
@@ -45,7 +53,7 @@ export default function Footer() {
                             <FaMapLocationDot />
                         </div>
                         <div>
-                            11 Test GRIVE, Ave. Mabelreign
+                            {appInfo?.data?.address}
                         </div>
                     </div>
                     {/*  */}
@@ -54,7 +62,7 @@ export default function Footer() {
                             <FaPhoneAlt />
                         </div>
                         <div>
-                            +263 782 210021
+                            {appInfo?.data?.phone}
                         </div>
                     </div>
                     {/* email */}

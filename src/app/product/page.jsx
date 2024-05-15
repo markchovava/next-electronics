@@ -11,11 +11,9 @@ import { getBrandsAll } from '@/api/getBrands';
 
 
 export default async function page() {
-    const products = await getProducts();
-    const [categories, brands] = await Promise.all([
-                                                    getCategoriesAll(), 
-                                                    getBrandsAll()
-                                                ]);
+    const [products, categories, brands] = await Promise.all([
+        getProducts(), getCategoriesAll(), getBrandsAll()
+    ]);
 
   return (
     <div>
@@ -25,7 +23,7 @@ export default async function page() {
                 <ul className='flex items-center justify-start gap-3 px-3 py-2'>
                     <li><Link href='/'>Home</Link></li>
                     <li><FaAngleRight /></li>
-                    <li><Link href='/product'>Product</Link></li>
+                    <li><Link href='/product'>All Products</Link></li>
                 </ul>
             </div>
         </section>

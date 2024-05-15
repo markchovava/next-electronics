@@ -11,6 +11,7 @@ export default function MainNavigation() {
         software: false,
         gadget: false,
         gift: false,
+        solar: false,
     });
 
   return (
@@ -35,10 +36,16 @@ export default function MainNavigation() {
                         </button>
                         <ul className={`absolute z-100 ${isActive.it == true ? 'block' : 'hidden'} drop-shadow-md top-[3rem] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                             <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
+                                <Link href='/category/desktops' className=''>Desktops</Link>
                             </li>
                             <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
+                                <Link href='/category/monitors' className=''>Monitors</Link>
+                            </li>
+                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
+                                <Link href='/category/printers' className=''>Printers</Link>
+                            </li>
+                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
+                                <Link href='/category/accessories' className=''>Accessories</Link>
                             </li>
                         </ul>
                     </li>
@@ -51,10 +58,7 @@ export default function MainNavigation() {
                         </button>
                         <ul className={`absolute z-100 ${isActive.security == true ? 'block' : 'hidden'} drop-shadow-md top-[3rem] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                             <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
-                            </li>
-                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
+                                <Link href='/category/cctv' className=''>CCTV</Link>
                             </li>
                         </ul>
                     </li>
@@ -67,45 +71,34 @@ export default function MainNavigation() {
                         </button>
                         <ul className={`absolute z-100 ${isActive.software == true ? 'block' : 'hidden'} drop-shadow-md top-[3rem] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                             <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
+                                <Link href='/category/operating-system' className=''>Operating System</Link>
                             </li>
                             <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600  px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
+                                <Link href='/category/point-of-sale' className=''>Point Of Sale</Link>
+                            </li>
+                        </ul>
+                    </li>
+                    {/* SOLAR */}
+                    <li className='relative px-3 py-2 text-slate-100'>
+                        <button 
+                            onClick={() => setIsActive({solar: !isActive.solar})}
+                            className='flex items-center justify-center gap-2'>
+                            Solar <FaAngleDown />
+                        </button>
+                        <ul className={`absolute z-100 ${isActive.solar == true ? 'block' : 'hidden'} drop-shadow-md top-[3rem] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
+                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
+                                <Link href='/category/batteries' className=''>Batteries</Link>
+                            </li>
+                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600  px-3 py-2'>
+                                <Link href='/category/invertors' className=''>Invertors</Link>
+                            </li>
+                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600  px-3 py-2'>
+                                <Link href='/category/television' className=''>Television</Link>
                             </li>
                         </ul>
                     </li>
                     {/* GADGETS */}
-                    <li className='relative px-3 py-2 text-slate-100'>
-                        <button 
-                            onClick={() => setIsActive({gadget: !isActive.gadget})}
-                            className='flex items-center justify-center gap-2'>
-                            Gadgets <FaAngleDown />
-                        </button>
-                        <ul className={`absolute z-100 ${isActive.gadget == true ? 'block' : 'hidden'} drop-shadow-md top-[3rem] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
-                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600  px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
-                            </li>
-                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='/category' className=''>Desktop</Link>
-                            </li>
-                        </ul>
-                    </li>
                     {/* GIFTS */}
-                    <li className='relative px-3 py-2 text-slate-100'>
-                        <button 
-                            onClick={() => setIsActive({gift: !isActive.gift})}
-                            className='flex items-center justify-center gap-2'>
-                            Gifts <FaAngleDown />
-                        </button>
-                        <ul className={`absolute z-100 ${isActive.gift == true ? 'block' : 'hidden'} drop-shadow-md top-[3rem] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
-                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='#' className=''>Desktop</Link>
-                            </li>
-                            <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                                <Link href='#' className=''>Desktop</Link>
-                            </li>
-                        </ul>
-                    </li>
                     {/* CONTACTS */}
                     <li className='px-3 py-2 text-slate-100'>
                         <Link href='/contact' className='flex items-center justify-center gap-2'>Contact Us</Link>

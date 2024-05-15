@@ -23,7 +23,7 @@ export default async function page({ params: {id} }) {
                 <ul className='flex items-center justify-start gap-3 px-3 py-2'>
                     <li><Link href='/'>Home</Link></li>
                     <li><FaAngleRight /></li>
-                    <li><Link href='/product'>Product</Link></li>
+                    <li><Link href={`/brand-product/${id}`}>Brand Products</Link></li>
                 </ul>
             </div>
         </section>

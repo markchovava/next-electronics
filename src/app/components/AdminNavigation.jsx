@@ -1,20 +1,58 @@
 "use client"
+import axiosClientAPI from "@/api/axiosClientAPI";
+import { tokenAuth } from "@/tokens/tokenAuth";
+import { tokenRole } from "@/tokens/tokenRole";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
 
 
 export default function AdminNavigation() {
+    const router = useRouter();
+    const { getAuthToken, removeAuthToken } = tokenAuth()
+    const { getRoleToken, removeRoleToken } = tokenRole();
+    const [isLogout, setIsLogout] = useState(false);
     const [isActive, setIsActive] = useState({
         setting: false,
         product: false,
         brand: false,
         category: false,
         delivery: false,
+        order: false,
         user: false,
         profile: false,
     });
+
+    console.log(getRoleToken())
+
+    const config = {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            'Authorization': `Bearer ${getAuthToken()}`, 
+        }
+    }
+
+    /* LOGOUT */
+    async function postLogout() {
+        try{
+            const result = await axiosClientAPI.get(`logout`, config)
+            .then((response) => {
+                removeAuthToken();
+                removeRoleToken();
+                router.push(`/login`) 
+                setIsLogout(false) 
+            
+            })
+        } catch (error) {
+            console.error(`Error: ${error}`)
+        } 
+    } 
+
+    useEffect(() => { 
+        isLogout == true && postLogout();
+    }, [isLogout]);
 
 
   return (
@@ -113,6 +151,19 @@ export default function AdminNavigation() {
                         </li>
                     </ul>
                 </li>
+                {/* ORDER */}
+                <li className="relative z-20">
+                    <button
+                        onClick={() => setIsActive({order: !isActive.order})} 
+                        className="flex items-center justify-start gap-2">
+                        Orders <FaAngleDown /> 
+                    </button> 
+                    <ul className={`absolute z-100 ${isActive.order == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 left-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
+                        <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
+                            <Link href='/admin/order' className=''>Order List</Link>
+                        </li>
+                    </ul>
+                </li>
             </ul>
             
             <ul className="flex items-center justify-start gap-4">
@@ -122,7 +173,7 @@ export default function AdminNavigation() {
                         onClick={() => setIsActive({profile: !isActive.profile})} 
                         className="flex items-center justify-start gap-2">
                         Profile <FaAngleDown /> </button> 
-                    <ul className={`absolute z-100 ${isActive.profile == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 right-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
+                    <ul className={`absolute z-120 ${isActive.profile == true ? 'block' : 'hidden'} drop-shadow-md top-[130%] transition-all ease-in-out duration-150 right-[-0.5rem]  w-[10rem] border border-white bg-gradient-to-br from-orange-500 to-pink-500`}>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
                             <Link href='/admin/profile' className=''>Profile</Link>
                         </li>
@@ -130,7 +181,7 @@ export default function AdminNavigation() {
                             <Link href='/admin/password' className=''>Password</Link>
                         </li>
                         <li className='w-[100%] hover:bg-gradient-to-br hover:from-pink-600 hover:to-orange-600 px-3 py-2'>
-                            <button className=''>Logout</button>
+                            <button onClick={() => setIsLogout(true)} className=''>Logout</button>
                         </li>
                     </ul>
                 </li>

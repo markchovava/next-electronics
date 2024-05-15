@@ -3,6 +3,7 @@
 export const productInit = (productInitialState) => {
     const result = {
         ...productInitialState, 
+        products: [],
         images: [
             {id:1},
             {id:2},
@@ -16,6 +17,7 @@ export const productInit = (productInitialState) => {
 
 export const productInitialState = {
     images: [],
+    products: []
 };
 
 
@@ -45,6 +47,23 @@ export const productReducer = (state, action) => {
                     }
                 })
             } 
+        case 'ADD_PRODUCTS':
+            return {
+                ...state,
+                products: action.payload,
+            }
+        case 'ADD_PRODUCT_QUANTITY':
+            return {
+                ...state,
+                products: state.products.filter((item) => {
+                    if(item.id === action.payload.id) {
+                        item.quantity = Number(action.payload.quantity);
+                        return item;
+                    } else{
+                        return item;
+                    }
+                })
+            }
      
         default:
            return state;

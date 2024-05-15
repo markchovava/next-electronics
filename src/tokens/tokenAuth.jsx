@@ -2,8 +2,9 @@
 import {setCookie, deleteCookie } from 'cookies-next';
 
 
-
 export const tokenAuthName = 'ELECTRONIC_AUTH_TOKEN';
+
+
 export const tokenAuth = () => {
     
     const setAuthToken = (token) => {

@@ -42,9 +42,39 @@ export async function getCategoryProducts(id) {
     return await response.json()
 }
 
+export async function getCategoryBySlug(slug) {
+    const response = await fetch( `${baseURL}category-by-slug?slug=${slug}`, 
+        { cache: 'no-cache', }, 
+    );
+    if(!response.ok) {
+       throw new Error('Failed to fetch Category.')
+    }
+    return await response.json()
+}
+
+export async function getCategoryProductsBySlug(slug) {
+    const response = await fetch( `${baseURL}category-products-by-slug?slug=${slug}`, 
+        { cache: 'no-cache', }, 
+    );
+    if(!response.ok) {
+       throw new Error('Failed to fetch Category.')
+    }
+    return await response.json()
+}
+
 
 export async function getCategoryFeatured() {
     const response = await fetch( `${baseURL}category-featured`, 
+        { cache: 'no-cache', }, 
+    );
+    if(!response.ok) {
+       throw new Error('Failed to fetch Featured Categories.')
+    }
+    return await response.json()
+}
+
+export async function getCategoryFeatured4() {
+    const response = await fetch( `${baseURL}category-featured-4`, 
         { cache: 'no-cache', }, 
     );
     if(!response.ok) {

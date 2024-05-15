@@ -19,6 +19,9 @@ export default function AppInfoEdit({ appInfo }) {
         image: appInfo?.data?.image,
         address: appInfo?.data?.address,
         email: appInfo?.data?.email,
+        whatsapp: appInfo?.data?.whatsapp,
+        facebook: appInfo?.data?.facebook,
+        instagram: appInfo?.data?.instagram,
     });
 
     const config = {
@@ -40,6 +43,9 @@ export default function AppInfoEdit({ appInfo }) {
             image: data?.image,
             email: data?.email,
             address: data?.address,
+            whatsapp: data?.whatsapp,
+            facebook: data?.facebook,
+            instagram: data?.instagram,
         }
         try{
             const result = await axiosClientAPI.post(`app-info`, formData, config)
@@ -66,7 +72,7 @@ export default function AppInfoEdit({ appInfo }) {
       <section className='w-[100%]'>
           <div className='mx-auto w-[80%]'>
               <div className='mb-6'>
-                  <h6 className='font-bold mb-2'>Image</h6>
+                  <h6 className='font-bold mb-2'>Image:</h6>
                   <input 
                     type='file' 
                     onChange={(e) => {
@@ -79,7 +85,7 @@ export default function AppInfoEdit({ appInfo }) {
                   </div>
               </div>
               <div className='mb-6'>
-                  <h6 className='font-bold mb-2'>Name</h6>
+                  <h6 className='font-bold mb-2'>Name:</h6>
                   <input 
                     placeholder="Enter Name here..."
                     name="name"
@@ -121,12 +127,42 @@ export default function AppInfoEdit({ appInfo }) {
                     className='w-[100%] rounded-lg outline-none px-4 py-3 border border-slate-300'/>
               </div>
               <div className='mb-6'>
-                  <h6 className='font-bold mb-2'>Website</h6>
+                  <h6 className='font-bold mb-2'>Website:</h6>
                   <input 
                     type='text' 
                     name="website"
                     onChange={handleInput}
                     value={data.website}
+                    placeholder="Enter website address here..."
+                    className='w-[100%] rounded-lg outline-none px-4 py-3 border border-slate-300'/>
+              </div>
+              <div className='mb-6'>
+                  <h6 className='font-bold mb-2'>Instagram:</h6>
+                  <input 
+                    type='text' 
+                    name="instagram"
+                    onChange={handleInput}
+                    value={data.instagram}
+                    placeholder="Enter website address here..."
+                    className='w-[100%] rounded-lg outline-none px-4 py-3 border border-slate-300'/>
+              </div>
+              <div className='mb-6'>
+                  <h6 className='font-bold mb-2'>WhatsApp:</h6>
+                  <input 
+                    type='text' 
+                    name="whatsapp"
+                    onChange={handleInput}
+                    value={data.whatsapp}
+                    placeholder="Enter website address here..."
+                    className='w-[100%] rounded-lg outline-none px-4 py-3 border border-slate-300'/>
+              </div>
+              <div className='mb-6'>
+                  <h6 className='font-bold mb-2'>Facebook:</h6>
+                  <input 
+                    type='text' 
+                    name="facebook"
+                    onChange={handleInput}
+                    value={data.facebook}
                     placeholder="Enter website address here..."
                     className='w-[100%] rounded-lg outline-none px-4 py-3 border border-slate-300'/>
               </div>

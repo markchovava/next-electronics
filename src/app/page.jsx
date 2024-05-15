@@ -9,10 +9,11 @@ import { getCategoryFeatured, getCategoryTopSelling } from "@/api/getCategory";
 
 
 
+
 export default async function Home() {
     const [featuredCategory, topSellingCategory] = await Promise.all([
                                                     getCategoryFeatured(), 
-                                                    getCategoryTopSelling()
+                                                    getCategoryTopSelling(),
                                                   ]);
 
 

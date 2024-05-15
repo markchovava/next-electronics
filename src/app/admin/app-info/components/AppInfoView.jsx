@@ -14,6 +14,9 @@ export default function AppInfoView({ appInfo }) {
     email: appInfo?.data?.email,
     image: appInfo?.data?.image,
     address: appInfo?.data?.address,
+    whatsapp: appInfo?.data?.whatsapp,
+    facebook: appInfo?.data?.facebook,
+    instagram: appInfo?.data?.instagram,
   });
 
   return (
@@ -52,6 +55,21 @@ export default function AppInfoView({ appInfo }) {
           <div className='w-[100%] flex items-center justify-start gap-4 mb-4'>
             <div className='w-[20%] font-semibold'>Website:</div>
             <div className='w-[80%]'>{data?.website}</div>
+          </div>
+          {/* FACEBOOK */}
+          <div className='w-[100%] flex items-center justify-start gap-4 mb-4'>
+            <div className='w-[20%] font-semibold'>Facebook:</div>
+            <div className='w-[80%]'>{data?.facebook}</div>
+          </div>
+          {/* INSTAGRAM */}
+          <div className='w-[100%] flex items-center justify-start gap-4 mb-4'>
+            <div className='w-[20%] font-semibold'>Instagram:</div>
+            <div className='w-[80%]'>{data?.instagram}</div>
+          </div>
+          {/* WHATSAPP */}
+          <div className='w-[100%] flex items-center justify-start gap-4 mb-4'>
+            <div className='w-[20%] font-semibold'>WhatsApp:</div>
+            <div className='w-[80%]'>{data?.whatsapp}</div>
           </div>
         </div>
     </section>

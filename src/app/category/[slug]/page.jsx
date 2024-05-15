@@ -2,18 +2,18 @@ import Link from 'next/link'
 import React from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 import { getBrandsAll } from '@/api/getBrands';
-import { getCategoriesAll, getCategory, getCategoryProducts } from '@/api/getCategory';
+import { getCategoriesAll, getCategoryBySlug, getCategoryProductsBySlug} from '@/api/getCategory';
 import CategoryProductList from './components/CategoryProductList';
 import RightNav from '@/app/components/RightNav';
 
 
 
 
-export default async function page({ params: {id} }) {
+export default async function page({ params: {slug} }) {
     const [categories, category, categoryProducts, brands] = await Promise.all([
-                                                    getCategoriesAll(), 
-                                                    getCategory(id),
-                                                    getCategoryProducts(id), 
+                                                    getCategoriesAll(),
+                                                    getCategoryBySlug(slug), 
+                                                    getCategoryProductsBySlug(slug), 
                                                     getBrandsAll()
                                                 ]);
 
@@ -25,7 +25,7 @@ export default async function page({ params: {id} }) {
                 <ul className='flex items-center justify-start gap-3 px-3 py-2'>
                     <li><Link href='/'>Home</Link></li>
                     <li><FaAngleRight /></li>
-                    <li><Link href='/product'>Product</Link></li>
+                    <li><Link href={`/category-product/${slug}`}>Category Products</Link></li>
                 </ul>
             </div>
         </section>
@@ -37,7 +37,7 @@ export default async function page({ params: {id} }) {
                 <RightNav brands={brands} categories={categories} />
 
                 {/* PRODUCT LIST */}
-                <CategoryProductList category={category} categoryProducts={categoryProducts} />
+                <CategoryProductList slug={slug} category={category} categoryProducts={categoryProducts} />
                 
             </div>
         </section>

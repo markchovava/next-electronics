@@ -5,10 +5,6 @@ import React, { useState } from 'react'
 
 
 export default function RightNav({ categories, brands}) {
-    console.log('categories')
-    console.log(categories)
-    console.log('brands')
-    console.log(brands)
     const [categoryData, setCategoryData] = useState(categories?.data)
     const [brandData, setBrandData] = useState(brands.data);
     
@@ -20,7 +16,7 @@ export default function RightNav({ categories, brands}) {
                 <ul className='flex flex-col items-start gap-2 px-6 mb-4 font-medium'>
                     {categoryData?.map((item, i) => (
                         <li className='w-[100%] hover:font-bold hover:translate-x-2 transition-all duration-200 ease-in-out'>
-                            <Link href={`/category/${item.id}`} className='w-[100%]'>
+                            <Link href={`/category/${item.slug}`} className='w-[100%]'>
                                 {item.name}
                             </Link>
                         </li>

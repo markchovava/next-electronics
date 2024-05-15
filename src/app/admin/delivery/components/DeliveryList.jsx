@@ -166,7 +166,7 @@ export default function DeliveryList() {
       </section>
       {/* TABLE TITLES */}
       <section className='w-[100%]'>
-        <div className='w-[90%] mx-auto flex items-center justify-start font-bold font-white bg-blue-200 '>
+        <div className='w-[90%] mx-auto flex items-center justify-start font-bold font-white bg-slate-200 '>
           <div className='w-[35%] border-r border-white px-3 py-2'>Name</div>
           <div className='w-[25%] border-r border-white px-3 py-2'>Price</div>
           <div className='w-[25%] border-r border-white px-3 py-2'>Author</div>
